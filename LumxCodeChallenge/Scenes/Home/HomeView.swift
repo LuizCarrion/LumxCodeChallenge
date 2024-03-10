@@ -7,6 +7,6 @@
 
 import UIKit
 
-class HomeView: UIView {
+class HomeView: BaseView {
   
 }

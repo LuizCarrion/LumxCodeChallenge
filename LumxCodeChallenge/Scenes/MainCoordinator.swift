@@ -7,15 +7,7 @@
 
 import UIKit
 
-protocol Coordinator {
-  var childCoordinators: [Coordinator] { get set }
-  var navigationController: UINavigationController { get set }
-
-  func start()
-}
-
 class MainCoordinator: Coordinator {
-  var childCoordinators = [Coordinator]()
   var navigationController: UINavigationController
   let service: DefaultNetworkService = DefaultNetworkService()
 
@@ -23,9 +15,13 @@ class MainCoordinator: Coordinator {
     self.navigationController = navigationController
   }
 
-  func start() {
+  override func start() {
     let viewModel = HomeViewModel()
     let viewController = HomeViewController()
     navigationController.pushViewController(viewController, animated: false)
+  }
+
+  override func finish() {
+    removeAllChildCoordinators()
   }
 }
