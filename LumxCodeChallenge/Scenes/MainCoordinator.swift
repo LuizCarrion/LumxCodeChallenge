@@ -16,12 +16,20 @@ class MainCoordinator: Coordinator {
   }
 
   override func start() {
-    let viewModel = HomeViewModel()
-    let viewController = HomeViewController()
+    let viewModel = HomeViewModel(service: service, navigation: self)
+    let viewController = HomeViewController(viewModel: viewModel)
     navigationController.pushViewController(viewController, animated: false)
   }
 
   override func finish() {
     removeAllChildCoordinators()
+  }
+}
+
+//MARK: - HomeNavigation
+
+extension MainCoordinator: HomeViewNavigationDelegate {
+  func navigateToDetails(model: Movie) {
+    print("navigating movie")
   }
 }

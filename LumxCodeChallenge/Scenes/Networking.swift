@@ -8,7 +8,7 @@
 import Foundation
 
 struct ApiKey {
-  static let key = ""
+  static let key = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0YTdlMWJiODFmNGRmYTc2NTBiNTYwYzRkYWExM2ZmYyIsInN1YiI6IjY1ZWZiMDgxZTE5ZGU5MDE2NWI4MWRhMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.hG3DNwoYeC1BTAbl00hEumd84jhom5Ze9YaEaL1Z0DA"
 }
 
 enum HTTPMethod: String {
