@@ -38,7 +38,7 @@ class HomeView: BaseView {
   lazy var collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
-    layout.itemSize = CGSize(width: 115, height: 165)
+    layout.itemSize = CGSize(width: 120, height: 215)
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.backgroundColor = .clear
