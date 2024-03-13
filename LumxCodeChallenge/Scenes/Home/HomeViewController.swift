@@ -40,16 +40,21 @@ class HomeViewController: BaseViewController<HomeView> {
   func setup() {
     baseView.collectionView.delegate = self
     baseView.collectionView.dataSource = self
+    baseView.delegate = self
   }
 }
 
-extension HomeViewController: HomeViewControllerDelegate {
+extension HomeViewController: HomeViewControllerDelegate, SegmentedControlDelegate {
   func displayError(error: Error) {
     print("error")
   }
 
   func updateCollectionView() {
-    print("request")
+    baseView.collectionView.reloadData()
+  }
+
+  func didChange() {
+    baseView.collectionView.reloadData()
   }
 }
 
@@ -63,14 +68,21 @@ extension HomeViewController: UICollectionViewDelegate {
 
 extension HomeViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 1
+    return viewModel.upcomingMovies.count
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ImageTextCollectionViewCell.self), for: indexPath) as? ImageTextCollectionViewCell else {
       return UICollectionViewCell()
     }
-    cell.configure(image: nil, title: "teste", text: "teste")
+
+    let movies = baseView.segmentedControl.selectedSegmentIndex == 0 ? viewModel.popularMovies : viewModel.upcomingMovies
+    let movie = movies[indexPath.row]
+
+    cell.configure(imageUrl: viewModel.generateImageUrl(path: movie.posterPath),
+                   title: movie.originalTitle,
+                   text: movie.releaseDate)
+
     return cell
   }
 }

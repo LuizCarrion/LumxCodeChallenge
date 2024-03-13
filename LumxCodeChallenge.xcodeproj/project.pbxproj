@@ -25,6 +25,7 @@
 		34135A7F2B9BC7AC00D6A8E2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34135A7E2B9BC7AC00D6A8E2 /* HomeView.swift */; };
 		34135A812B9BCFA100D6A8E2 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34135A802B9BCFA100D6A8E2 /* MainCoordinator.swift */; };
 		34135A832B9BD0A900D6A8E2 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34135A822B9BD0A800D6A8E2 /* Networking.swift */; };
+		34F24BA02BA1024500D87700 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F24B9F2BA1024500D87700 /* UIImageViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		34135A7E2B9BC7AC00D6A8E2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		34135A802B9BCFA100D6A8E2 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		34135A822B9BD0A800D6A8E2 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		34F24B9F2BA1024500D87700 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 		34135A452B9BC41E00D6A8E2 /* LumxCodeChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				34F24B9E2BA1023300D87700 /* Extensions */,
 				340390DE2B9E483600B8E0BE /* Components */,
 				340390D72B9E3C6B00B8E0BE /* Utils */,
 				34135A782B9BC5E600D6A8E2 /* Resources */,
@@ -200,6 +203,14 @@
 				340A5E632B9FE97300C7C971 /* HomeRequest.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		34F24B9E2BA1023300D87700 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				34F24B9F2BA1024500D87700 /* UIImageViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +351,7 @@
 				340390E12B9E499500B8E0BE /* ImageTextCollectionViewCell.swift in Sources */,
 				34135A7D2B9BC7A500D6A8E2 /* HomeViewModel.swift in Sources */,
 				340390D92B9E3CBE00B8E0BE /* BaseViewController.swift in Sources */,
+				34F24BA02BA1024500D87700 /* UIImageViewExtension.swift in Sources */,
 				340A5E622B9FE64700C7C971 /* MoviesModel.swift in Sources */,
 				340390DB2B9E3CFF00B8E0BE /* BaseView.swift in Sources */,
 				34135A7B2B9BC79600D6A8E2 /* HomeViewController.swift in Sources */,
