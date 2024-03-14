@@ -16,7 +16,7 @@ class HomeViewController: BaseViewController<HomeView> {
 
   //MARK: - ViewModel
 
-  let viewModel: HomeViewModelProtocol
+  var viewModel: HomeViewModelProtocol
 
   //MARK: - Init
 
@@ -41,6 +41,7 @@ class HomeViewController: BaseViewController<HomeView> {
     baseView.collectionView.delegate = self
     baseView.collectionView.dataSource = self
     baseView.delegate = self
+    viewModel.delegate = self
   }
 }
 
@@ -61,7 +62,11 @@ extension HomeViewController: HomeViewControllerDelegate, SegmentedControlDelega
 //MARK: - CollectionView Delegate
 
 extension HomeViewController: UICollectionViewDelegate {
-
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let movies = baseView.segmentedControl.selectedSegmentIndex == 0 ? viewModel.popularMovies : viewModel.upcomingMovies
+    let movie = movies[indexPath.row]
+    viewModel.navigateToMovieDetails(movie: movie)
+  }
 }
 
 //MARK: - CollectionView DataSource
@@ -81,7 +86,7 @@ extension HomeViewController: UICollectionViewDataSource {
 
     cell.configure(imageUrl: viewModel.generateImageUrl(path: movie.posterPath),
                    title: movie.originalTitle,
-                   text: movie.releaseDate)
+                   text: movie.releaseDate?.roundTripDate(style: .short))
 
     return cell
   }

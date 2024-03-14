@@ -10,7 +10,7 @@ import Foundation
 //MARK: - NavigationDelegate
 
 protocol HomeViewNavigationDelegate: AnyObject {
-  func navigateToDetails(model: Movie)
+  func navigateToDetails(movie: Movie)
 }
 
 //MARK: - Protocol
@@ -18,8 +18,10 @@ protocol HomeViewNavigationDelegate: AnyObject {
 protocol HomeViewModelProtocol {
   var upcomingMovies: Movies { get }
   var popularMovies: Movies { get }
+  var delegate: HomeViewControllerDelegate? { get set }
   func loadUpcomingMovies()
   func generateImageUrl(path: String?) -> String
+  func navigateToMovieDetails(movie: Movie)
 }
 
 class HomeViewModel: HomeViewModelProtocol {
@@ -47,6 +49,7 @@ class HomeViewModel: HomeViewModelProtocol {
     return baseUrl + path
   }
 
+  //MARK: - Filter
 
   func filterUpcomingMovies() {
     guard popularMovies.count > 0 else { return }
@@ -66,16 +69,21 @@ class HomeViewModel: HomeViewModelProtocol {
   func loadUpcomingMovies() {
     service?.request(HomeRequest(), completion: { [weak self] result in
       guard let self = self else { return }
-
-      switch result {
-        case .success(let response):
-          self.popularMovies = response.results ?? []
-          filterUpcomingMovies()
-          self.delegate?.updateCollectionView()
-        case .failure(let error):
-          self.delegate?.displayError(error: error)
-          print(error)
+      DispatchQueue.main.async {
+        switch result {
+          case .success(let response):
+            self.popularMovies = response.results ?? []
+            self.filterUpcomingMovies()
+            self.delegate?.updateCollectionView()
+          case .failure(let error):
+            self.delegate?.displayError(error: error)
+            print(error)
+        }
       }
     })
+  }
+
+  func navigateToMovieDetails(movie: Movie) {
+    navigation?.navigateToDetails(movie: movie)
   }
 }
