@@ -29,7 +29,10 @@ class MainCoordinator: Coordinator {
 //MARK: - HomeNavigation
 
 extension MainCoordinator: HomeViewNavigationDelegate {
-  func navigateToDetails(model: Movie) {
-    print("navigating movie")
+  func navigateToDetails(movie: Movie) {
+    let viewModel = MovieDetailsViewModel(movie: movie, service: service)
+    let viewController = MovieDetailsViewController(viewModel: viewModel)
+
+    navigationController.pushViewController(viewController, animated: true)
   }
 }
