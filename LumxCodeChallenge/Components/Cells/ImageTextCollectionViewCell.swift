@@ -11,7 +11,7 @@ class ImageTextCollectionViewCell: UICollectionViewCell {
   
   // MARK: - Views
 
-  private lazy var imageView: UIImageView = {
+  lazy var imageView: UIImageView = {
     let image = UIImageView()
     image.contentMode = .scaleAspectFill
     image.clipsToBounds = true
@@ -19,7 +19,7 @@ class ImageTextCollectionViewCell: UICollectionViewCell {
     return image
   }()
 
-  private lazy var textLabel: UILabel = {
+  lazy var textLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .center
@@ -34,7 +34,7 @@ class ImageTextCollectionViewCell: UICollectionViewCell {
     return label
   }()
 
-  private lazy var titleLabel: UILabel = {
+  lazy var titleLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .center
@@ -59,19 +59,19 @@ class ImageTextCollectionViewCell: UICollectionViewCell {
 
   //MARK: - Setup
 
-  private func initialize() {
+  func initialize() {
     backgroundColor = .clear
     addComponents()
     setupComponents()
   }
 
-  private func addComponents() {
+  func addComponents() {
     contentView.addSubview(imageView)
     contentView.addSubview(textLabel)
     contentView.addSubview(titleLabel)
   }
 
-  private func setupComponents() {
+  func setupComponents() {
     NSLayoutConstraint.activate([
       imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
       imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
