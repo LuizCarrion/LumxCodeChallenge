@@ -42,7 +42,7 @@ class MovieDetailsView: BaseView {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .left
-    label.font = .systemFont(ofSize: 18, weight: .light)
+    label.font = .systemFont(ofSize: 14, weight: .light)
     label.textColor = .white
     return label
   }()
@@ -149,7 +149,7 @@ class MovieDetailsView: BaseView {
     imageView.imageFromServerURL(imagePath, placeHolder: nil)
     titleLabel.text = title
     yearLabel.text = year.roundTripDate(style: .short)
-    genreLabel.text = duration + " - " + createGenresLabel(genres: genres)
+    genreLabel.text = duration + "m - " + createGenresLabel(genres: genres)
     textView.text = detailText
   }
 
